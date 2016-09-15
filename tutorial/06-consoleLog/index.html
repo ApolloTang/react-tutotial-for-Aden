@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>00</title>
+    <link rel="stylesheet" href="../shared/css/base.css" />
+    <style type="text/less">
+      @bgcolor: #aaa;
+      body{
+        background: @bgcolor;
+      }
+    </style>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/2.7.1/less.min.js"></script>
+  </head>
+  <body>
+    <div id="container">
+      <p>
+        If you can see this, React is <strong>not</strong> working right.
+        If you checked out the source from GitHub make sure to run <code>grunt</code>.
+      </p>
+    <script src="../../build/react.js"></script>
+    <script src="../../build/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.24/browser.min.js"></script>
+    <script type="text/babel">
+
+
+    ///////////// START /////////////// 
+        const items = [];
+        let i;
+        for (i = 0; i < 1000; i++) { 
+            const evenOdd = (i % 2)?'even' : 'odd';
+            console.log(' - - - - - - - - -');
+
+            console.log('Aden\'s mesage:: content of variable evenOdd is:  ', i, evenOdd);
+            
+            const classname = `item ${ evenOdd }`;
+
+            console.log('Aden\'s mesage:: content of variable classname is:  ', i, classname);
+
+            items.push(<li key={i} className={classname} >{i}</li>);
+        }
+
+      var Collection = React.createClass({
+        render: function() {
+          return (
+          <ul className="collection">
+           {items}
+          </ul>
+          );
+        }
+      });
+
+      var ExampleApplication = React.createClass({
+        render: function() {
+          return (
+          <div className="container">
+            <Collection />        
+          </div>
+          );
+        }
+      });
+
+     ///////////// END  /////////////// 
+      setInterval(function() {
+        ReactDOM.render(
+          <ExampleApplication />,
+          document.getElementById('container')
+        );
+      }, 50);
+    </script>
+  </body>
+</html>
